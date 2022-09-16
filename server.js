@@ -28,7 +28,9 @@ mongoose.connect(uri, connectionParams)
     console.error(`Error connecting to the database. \n${err}`);
   })
 
-app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 app.use(bodyParser.urlencoded({
   extended: false
 }))
