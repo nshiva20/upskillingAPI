@@ -33,13 +33,26 @@ app.use(bodyParser.urlencoded({
   extended: false
 }))
 app.use(bodyParser.json());
+app.get('/getDBConnect', (req, res) => {
+  mongoose.connect(uri, connectionParams)
+    .then(() => {
+      console.log('Connected to database ')
+      res
+        .send("Connected to database")
+        .end();
+    })
+    .catch((err) => {
+      console.error(`Error connecting to the database. \n${err}`);
+    })
+
+})
 app.get('/', (req, res) => {
   res
     .status(200)
-    .send('Hello server is running'+ uri)
+    .send('Hello server is running' + uri)
     .end();
 });
- 
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
