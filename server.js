@@ -20,7 +20,7 @@ const connectionParams = {
   useUnifiedTopology: true,
   useNewUrlParser: true
 }
-mongoose.connect(url, connectionParams)
+mongoose.connect(uri, connectionParams)
   .then(() => {
     console.log('Connected to database ')
   })
