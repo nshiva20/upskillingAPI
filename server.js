@@ -4,6 +4,7 @@ const port = 3000
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const userDataController = require('./app/controllers/userData.controller');
+const uri = process.env.MONGODB_URI;
 // const mongoose = require("mongoose");
 // mongoose.connect('mongodb://localhost:27017/Upskilling',
 //   {
@@ -35,7 +36,7 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => {
   res
     .status(200)
-    .send('Hello server is running')
+    .send('Hello server is running'+ uri)
     .end();
 });
  
