@@ -14,7 +14,7 @@ const uri = process.env.MONGODB_URI;
 // );
 const mongoose = require('mongoose')
 
-const url = `mongodb+srv://admin:admin@cluster1.mlnqlod.mongodb.net/Upskilling?retryWrites=true&w=majority`;
+// const uri = 'mongodb+srv://admin:admin@cluster1.mlnqlod.mongodb.net/Upskilling?retryWrites=true&w=majority';
 
 const connectionParams = {
   useUnifiedTopology: true,
@@ -67,11 +67,25 @@ app.post("/userData", (req, res) => {
   // console.log(JSON.stringify(req.body))
   // res.send(200);
   var data = req.body;
+  userDataController.
   userDataController.create(data, function (err, data) {
     if (err) res.json(err);
     else res.send('Successfully inserted!');
   });
 });
+
+
+app.post("/checkAccess",(req,res)=>{
+  const data = req.body;
+  // console.log(data);
+  const response = userDataController.checkExistingUser(data);
+  response.then((data,err)=>{
+    if(err) res.json(err);
+    else res.status(201).send({'response':data});
+  });
+  
+});
+
 
 // app.listen(port, () => {
 //   console.log(`Example app listening on port ${port}`)
