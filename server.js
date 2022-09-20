@@ -5,6 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const userDataController = require('./app/controllers/userData.controller');
 const uri = process.env.MONGODB_URI;
+// const uri ="mongodb://localhost:27017/Upskilling";
 // const mongoose = require("mongoose");
 // mongoose.connect('mongodb://localhost:27017/Upskilling',
 //   {

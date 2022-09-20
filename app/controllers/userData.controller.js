@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const db = require("../config/db.config");
 const uri = process.env.MONGODB_URI;
+// const uri ="mongodb://localhost:27017/Upskilling";
 const connectionParams = {
   useUnifiedTopology: true,
   useNewUrlParser: true
@@ -34,7 +35,7 @@ exports.create = (req, res) => {
 };
 
 exports.checkExistingUser = (async (req)=>{
-  // console.log(req);
+  console.log(req);
   
   const users = await userData.findOne({"userDetails.email":req.email});
   if(users==null){
