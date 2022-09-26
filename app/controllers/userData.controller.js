@@ -39,12 +39,12 @@ exports.checkExistingUser = (async (req)=>{
   
   const users = await userData.findOne({"userDetails.email":req.email});
   if(users==null){
-    return false;
-  }
-  else if(users!=null||users.scoreCount!=null||users.scoreCount>=0){
     return true;
   }
-  else{
+  else if(users!=null||users.scoreCount!=null||users.scoreCount>=0){
     return false;
+  }
+  else{
+    return true;
   }
 });
