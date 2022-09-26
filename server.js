@@ -68,7 +68,6 @@ app.post("/userData", (req, res) => {
   // console.log(JSON.stringify(req.body))
   // res.send(200);
   var data = req.body;
-  userDataController.
   userDataController.create(data, function (err, data) {
     if (err) res.json(err);
     else res.send('Successfully inserted!');
